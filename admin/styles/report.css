@@ -7,14 +7,59 @@ body
   font-size: 12px;
 }
 
+.toolbar
+{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 40px;
+  background: #333333;
+  border-bottom: solid 1px #000000;
+  z-index: 1;
+}
+
+.shadow
+{
+  position: fixed;
+  left: 0;
+  top: 41px;
+  right: 0;
+  height: 4px;
+  background: url("../images/shadow.png");
+  z-index: 1;
+}
+
+.logo
+{
+  position: absolute;
+  width: 115px;
+  height: 30px;
+  left: 10px;
+  top: 7px;
+  background: url("../images/kayako.png") no-repeat;
+}
+
+.link_container
+{
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  color: #c0c0c0;
+}
+
 .report_container
 {
+  position: relative;
   height: 100%;
   width: 800px;
   margin: 0 auto;
+  margin-top: 0;
+  padding-top: 40px;
   border-left: solid 1px #ebeaea;
   border-right: solid 1px #ebeaea;
   background: #ffffff;
+  z-index: 0;
 }
 
 .report_item
@@ -96,38 +141,59 @@ body
   color: #888888;
 }
 
-.icon_container
+.icon_center
 {
   position: absolute;
-  width: 40px;
+  width: 0;
+  height: 0;
+  left: 50%;
   bottom: 0;
-  border: solid 1px black;
-  background: #ffffff;
-  opacity: .5;
+}
+
+.icon_container
+{
+  display: none;
+  position: relative;
+  width: 44px;
+  left: -22px;
+  height: 25px;
+  top: -26px;
+  background: #faf7f7;
+  border: solid 1px #d2d2d2;
+  border-bottom: 0;
+}
+
+.report_item:hover .icon_container
+{
+  display: inline-block;
 }
 
 .icon
 {
+  position: absolute;
+  top: 5px;
   width: 16px;
   height: 16px;
 }
 
 .download
 {
+  left: 4px;
   background: url("../images/download.png") no-repeat;
   cursor: pointer;
 }
 
 .delete
 {
+  position: absolute;
+  left: 24px;
   background: url("../images/delete.png") no-repeat;
   cursor: pointer;
-  margin-left: 4px;
 }
 
 a
 {
-  color: #2366B3;
+  color: #ffffff;
   text-decoration: none;
 }
 

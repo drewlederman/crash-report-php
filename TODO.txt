@@ -1,0 +1,5 @@
+crashreport TODO
+
+- Ability to filter reports by product, IP, etc
+- Fix stack trace extraction (need regex)
+- Ability to link to a single report (with stack expanded by default)

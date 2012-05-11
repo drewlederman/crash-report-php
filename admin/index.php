@@ -24,6 +24,18 @@
 
 <body>
 
+  <div class='toolbar'>
+    <div class='logo'></div>
+    <div class='link_container'>
+      Sort
+      <a href='index.php?sort=productid'>product</a> | 
+      <a href='index.php?sort=version'>version</a> | 
+      <a href='index.php?sort=timestamp'>date</a> |
+      <a href='index.php?sort=ip'>IP</a>
+    </div>
+  </div>
+  <div class='shadow'></div>
+  
   <?php if ($count == 0): ?>
     <div class='no_reports'>No Crash Reports</div>
   <?php else: ?>
