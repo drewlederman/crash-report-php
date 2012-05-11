@@ -1,0 +1,159 @@
+body
+{
+  margin: 0;
+  padding: 0;
+  background: #fcfafa;
+  font-family: Tahoma, Arial;
+  font-size: 12px;
+}
+
+.report_container
+{
+  height: 100%;
+  width: 800px;
+  margin: 0 auto;
+  border-left: solid 1px #ebeaea;
+  border-right: solid 1px #ebeaea;
+  background: #ffffff;
+}
+
+.report_item
+{
+  position: relative;
+  margin: 10px;
+  padding: 4px;
+  border: solid 1px #888888;
+  background: #f2f1f1;
+}
+
+.productid 
+{
+  height: 32px;
+  padding-left: 36px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #4a4949;
+}
+
+.version
+{
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.timestamp
+{
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  color: #888888;
+}
+
+.stacktrace_container
+{
+  margin: 10px;
+  padding: 4px;
+  border: solid 1px #d2d2d2;
+  background: #faf7f7;
+  color: #888888;
+}
+
+.stacktrace
+{
+  height: 30px;
+  overflow: hidden;
+}
+
+.expanded
+{
+  height: auto;
+}
+
+.spacer
+{
+  width: 0;
+  height: 16px;
+}
+
+.description
+{
+  position: absolute;
+  left: 10px;
+  bottom: 4px;
+  color: #888888;
+  max-width: 30%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ip
+{
+  position: absolute;
+  right: 10px;
+  bottom: 4px;
+  color: #888888;
+}
+
+.icon_container
+{
+  position: absolute;
+  width: 40px;
+  bottom: 0;
+  border: solid 1px black;
+  background: #ffffff;
+  opacity: .5;
+}
+
+.icon
+{
+  width: 16px;
+  height: 16px;
+}
+
+.download
+{
+  background: url("../images/download.png") no-repeat;
+  cursor: pointer;
+}
+
+.delete
+{
+  background: url("../images/delete.png") no-repeat;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+a
+{
+  color: #2366B3;
+  text-decoration: none;
+}
+
+a:hover
+{
+  color: red;
+}
+
+.application
+{
+  background: url("../images/appicons/application.png") no-repeat;
+}
+
+/* Custom product icons */
+
+.LiveResponse
+{
+  background: url("../images/appicons/liveresponse.png") no-repeat;
+}
+
+.KayakoDesktop
+{
+  background: url("../images/appicons/kayakodesktop.png") no-repeat;
+}
+
+.OnSiteViewer
+{
+  background: url("../images/appicons/onsite.png") no-repeat;
+}

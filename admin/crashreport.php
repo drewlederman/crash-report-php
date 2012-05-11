@@ -12,18 +12,24 @@ class CrashReport
   }
   
   public function EchoHTML() {
-    $template = new Template('crashreport_row.tpl');
+    $template = new Template('templates/crashreport_row.tpl');
+    
+    $stacktrace  = str_replace("\n", '<br>', htmlspecialchars($this->row['stacktrace']));
+    $description = htmlspecialchars($this->row['description']);
+    $ipstr       = long2ip($this->row['ip']);
+    $timestamp   = date("g:i A m/d/Y", $this->row['timestamp']);
+    $iconclass   = str_replace(" ", "", $this->row['productid']);
     
     $template->set('entryid',     $this->row['entryid']);
     $template->set('productid',   $this->row['productid']);
     $template->set('version',     $this->row['version']);
     $template->set('dumpfile',    $this->row['dumpfile']);
-    $template->set('stacktrace',  $this->row['stacktrace']);
-    $template->set('description', $this->row['description']);
     $template->set('ip',          $this->row['ip']);
-    $template->set('ipstr',       long2ip($this->row['ip']));
-    $template->set('timestamp',   date("m/d/Y g:i A", $this->row['timestamp']));
-    $template->set('iconclass',   str_replace(" ", "", $this->row['productid']));
+    $template->set('stacktrace',  $stacktrace);
+    $template->set('description', $description);
+    $template->set('ipstr',       $ipstr);
+    $template->set('timestamp',   $timestamp);
+    $template->set('iconclass',   $iconclass);
     
     echo $template->output();
   }

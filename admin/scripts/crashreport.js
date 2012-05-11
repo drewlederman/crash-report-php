@@ -52,3 +52,7 @@ function massActionDelete() {
     deleteEntries(ids);
   }
 }
+
+function onClickStackTrace(elem) {
+  $(elem).toggleClass("expanded");
+}
