@@ -116,13 +116,13 @@ function GetStackTrace($dir) {
 }
 
 function StripStackTrace($output) {
-  $begin = '*** Stack trace for last set context - .thread/.cxr resets it';
-  $end   = 'quit:';
-
-  $startpos = strpos($output, $begin) + strlen($begin)+1;
-  $endpos   = strpos($output, $end, $startpos);
-
-  return substr($output, $startpos, $endpos-$startpos);
+  $pattern = '/Stack trace for last set context - \.thread\/\.cxr resets it\n # \n(.*)quit:\n\z/s';
+  $matches = array();
+  $nummatches = preg_match($pattern, $output, $matches);
+  if ($nummatches == 0) {
+    return 'Stack trace unavailable.';
+  }
+  return $matches[1];
 }
 
 function DeleteFolder($dir) {
