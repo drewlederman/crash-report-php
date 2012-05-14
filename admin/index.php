@@ -26,6 +26,13 @@
 
   <div class='toolbar'>
     <div class='logo'></div>
+    <div class='massaction icon_center'>
+    <div class='massaction icon_container'>
+      <input type='checkbox' class='massaction_chk' onclick='javascript:selectAll(this);'></input>
+      <div title='Download Selected' class='download icon' onclick='javascript:massActionDownload();'></div>
+      <div title='Delete Selected' class='delete icon' onclick='javascript:massActionDelete();'></div>
+    </div>
+    </div>
     <div class='link_container'>
       Sort
       <a href='index.php?sort=productid'>product</a> | 
@@ -37,14 +44,16 @@
   <div class='shadow'></div>
   
   <?php if ($count == 0): ?>
-    <div class='no_reports'>No Crash Reports</div>
+    <div class='no_reports'>Nothing to report!</div>
   <?php else: ?>
-    <div class='report_container'>
-      <?php 
-        foreach($crashreports as $report) {
-          $report->EchoHTML();
-        }
-      ?>
+    <div class='report_scroll'>
+      <div class='report_container'>
+        <?php 
+          foreach($crashreports as $report) {
+            $report->EchoHTML();
+          }
+        ?>
+      </div>
     </div>
   <?php endif ?>
 

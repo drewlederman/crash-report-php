@@ -34,12 +34,13 @@ function CreateReport() {
 
   $productid = mysql_real_escape_string($_POST['productid']);
   $version   = mysql_real_escape_string($_POST['version']);
+  $dumpfile  = mysql_real_escape_string(pathinfo($file, PATHINFO_BASENAME));
   $timestamp = mysql_real_escape_string($_SERVER['REQUEST_TIME']);
   $iplong    = mysql_real_escape_string(ip2long($_SERVER['REMOTE_ADDR']));
   $stack     = mysql_real_escape_string($stacktrace);
   $desc      = mysql_real_escape_string($description);
 
-  $query = "INSERT INTO entries (productid, version, dumpfile, stacktrace, description, timestamp, ip) VALUES ('$productid', '$version', '$file', '$stack', '$desc', '$timestamp', '$iplong');";
+  $query = "INSERT INTO entries (productid, version, dumpfile, stacktrace, description, timestamp, ip) VALUES ('$productid', '$version', '$dumpfile', '$stack', '$desc', '$timestamp', '$iplong');";
   
   return $db->query($query);
 }

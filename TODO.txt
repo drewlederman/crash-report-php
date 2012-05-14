@@ -1,6 +1,7 @@
 crashreport TODO
 
-- Reimplement mass-action download/delete
+- Fix max execution time error
 - Ability to filter reports by product, IP, etc
-- Fix stack trace extraction (need regex)
 - Ability to link to a single report (with stack expanded by default)
+- Auto-load 'pagination'
+- Fix scroll bar (shows up when it shouldn't)

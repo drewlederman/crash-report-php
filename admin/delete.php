@@ -16,7 +16,8 @@ $query = "SELECT entries.dumpfile FROM entries " .
 $results = $db->query($query);
 
 if ($results !== NULL) {
-  foreach ($results as $file) {
+  foreach ($results as $row) {
+    $file = "./files/{$row['dumpfile']}";
     unlink($file);
   }
 }
