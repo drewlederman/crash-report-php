@@ -1,0 +1,34 @@
+
+.logo
+{
+  position: relative;
+  width: 115px;
+  height: 30px;
+  margin: 10px auto;
+  background-image: url("../images/kayako-hdpi.png");
+  background-size: 115px 30px;
+}
+
+.crashreport
+{
+  position: relative;
+}
+
+.version
+{
+  color: #aaaaaa;
+}
+
+.delete
+{
+  position: absolute;
+  right: -8px;
+  top: 0;
+}
+
+.stacktrace
+{
+  white-space: nowrap;
+  overflow: scroll;
+  width: 100%;
+}

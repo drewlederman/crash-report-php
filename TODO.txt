@@ -5,3 +5,4 @@ crashreport TODO
 - Ability to link to a single report (with stack expanded by default)
 - Auto-load 'pagination'
 - Fix scroll bar (shows up when it shouldn't)
+- Always show controls when item is selected

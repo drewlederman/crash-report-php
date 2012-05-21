@@ -1,5 +1,6 @@
 <?php 
   include('common.php');
+  include('mobileredirect.php');
   require('crashreport.php');
   
   $productid = isset($_GET['productid']) ? $_GET['productid'] : "";
