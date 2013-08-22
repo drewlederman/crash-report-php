@@ -1,6 +1,8 @@
 <?php
 
-$con = mysql_connect('localhost', 'root', '35yw46uje5jtn');
+include('databasedefines.php');
+
+$con = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 if (!$con)
   die("Couldn't connect to MySql! " . mysql_error());
 

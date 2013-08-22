@@ -1,8 +1,10 @@
 <?php
+
 include('common.php');
 require('crashreport.php');
 
 $crashreports = GetCrashReports('','','','');
+
 ?>
 
 <!DOCTYPE html>

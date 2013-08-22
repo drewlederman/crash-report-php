@@ -1,9 +1,6 @@
 <?php
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '35yw46uje5jtn');
-define('DB_NAME', 'crashreports');
+include('databasedefines.php');
 
 class Database {
 
