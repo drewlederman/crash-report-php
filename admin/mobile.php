@@ -25,7 +25,7 @@ $crashreports = GetCrashReports('','','','');
   <div data-role="page">
   
     <div data-role="header">
-      <div class='logo'></div>
+      <div class='logo'>Crash Reporter</div>
     </div>
   
     <div data-role="content">

@@ -41,12 +41,12 @@ body
 
 .logo
 {
-  position: absolute;
-  width: 115px;
-  height: 30px;
-  left: 10px;
-  top: 7px;
-  background: url("../images/kayako.png") no-repeat;
+  font-family: "Lucida Console", "Courier New";
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 40px;
+  padding-left: 15px;
 }
 
 .link_container

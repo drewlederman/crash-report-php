@@ -28,7 +28,7 @@
 <body>
 
   <div class='toolbar'>
-    <div class='logo'></div>
+    <div class='logo'>Crash Reporter</div>
     <div class='massaction icon_center'>
     <div class='massaction icon_container'>
       <input type='checkbox' class='massaction_chk' onclick='javascript:selectAll(this);'></input>
