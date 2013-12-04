@@ -6,7 +6,7 @@ function selectAll(chk) {
 }
 
 function download(file) {
-  var url = "./files/"+file;
+  var url = "../files/"+file;
   window.open(url, "_blank");
 }
 

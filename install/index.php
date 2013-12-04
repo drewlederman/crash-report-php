@@ -1,6 +1,6 @@
 <?php
 
-include_once('databasedefines.php');
+include_once('../include/databasedefines.php');
 
 $con = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 if (!$con)

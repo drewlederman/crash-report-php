@@ -1,6 +1,6 @@
 <?php
 
-require_once('database.php');
+require_once('../classes/database.php');
 
 if (!isset($_GET['entryids']))
   die("No entryids provided!");
@@ -14,7 +14,7 @@ $results = $db->GetCrashReportFiles($entryids);
 
 if ($results !== NULL) {
   foreach ($results as $row) {
-    $file = "./files/{$row['dumpfile']}";
+    $file = "../files/{$row['dumpfile']}";
     unlink($file);
   }
 }

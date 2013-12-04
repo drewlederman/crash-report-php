@@ -1,6 +1,6 @@
 <?php
 
-require_once('admin/database.php');
+require_once('../classes/database.php');
 
 if (!CreateReport()) {
   header('HTTP/1.1 500 Internal server error');
@@ -47,7 +47,7 @@ function CopyTempFile() {
   }
 
   $tmpfile = $_FILES['crashrpt']['tmp_name'];
-  $newfile = "./admin/files/".uniqid().".zip";
+  $newfile = "../files/".uniqid().".zip";
 
   if (!copy($tmpfile, $newfile)) {
     return false;
@@ -59,7 +59,7 @@ function CopyTempFile() {
 function Unzip($file) {
   $zip = new ZipArchive();
   if ($zip->open($file) === TRUE) {
-    $dir = './admin/files/temp/' . pathinfo($file, PATHINFO_FILENAME);
+    $dir = '../files/temp/' . pathinfo($file, PATHINFO_FILENAME);
     $zip->extractTo($dir);
     $zip->close();
     return $dir;
@@ -100,8 +100,8 @@ function GetDescription($dir) {
 function GetStackTrace($dir) {
   $files = glob($dir . '/*.dmp');
   if (isset($files[0])) {
-    $dbgpath = str_replace(' ', '', ".\\admin\\debug\\{$_POST['productid']}\\{$_POST['version']}\\");
-    $sympath = 'SRV*.\\admin\\debug\\cache\\*http://msdl.microsoft.com/download/symbols/;' . $dbgpath;
+    $dbgpath = str_replace(' ', '', "..\\symbols\\{$_POST['productid']}\\{$_POST['version']}\\");
+    $sympath = 'SRV*..\\symbols\\cache\\*http://msdl.microsoft.com/download/symbols/;' . $dbgpath;
         
     $output = shell_exec("cdb -z $files[0] -c .ecxr;kcn;q -y $sympath");
     

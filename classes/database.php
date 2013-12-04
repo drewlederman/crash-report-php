@@ -1,6 +1,6 @@
 <?php
 
-include_once('databasedefines.php');
+include_once('../include/databasedefines.php');
 require_once('crashreport.php');
 
 class Database {
@@ -59,7 +59,9 @@ class Database {
       $stacktrace  = mysql_real_escape_string($stacktrace);
       $description = mysql_real_escape_string($description);
       
-      $query = "INSERT INTO entries (productid, version, dumpfile, stacktrace, description, timestamp, ip) VALUES ('$productid', '$version', '$dumpfile', '$stacktrace', '$description', '$timestamp', '$ipaddress');";
+      $query = "INSERT INTO entries " .
+               "(productid, version, dumpfile, stacktrace, description, timestamp, ip) " .
+               "VALUES ('$productid', '$version', '$dumpfile', '$stacktrace', '$description', '$timestamp', '$ipaddress');";
       
       return $this->query($query);
   }
@@ -88,13 +90,15 @@ class Database {
   }
   
   public function DeleteCrashReports($reportids) {
-      $query = "DELETE FROM entries WHERE entryid in ($reportids);";
+      $query = "DELETE FROM entries ".
+               "WHERE entryid in ($reportids);";
 
       return $this->query($query);
   }
   
   public function GetCrashReportFiles($reportids) {
-      $query = "SELECT entries.dumpfile FROM entries WHERE entryid in ($reportids);";
+      $query = "SELECT entries.dumpfile FROM entries " .
+               "WHERE entryid in ($reportids);";
 
       return $this->query($query);
   }

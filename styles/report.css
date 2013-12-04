@@ -254,17 +254,7 @@ a:hover
 
 /* Custom product icons */
 
-.LiveResponse
+.SampleApp
 {
-  background: url("../images/appicons/liveresponse.png") no-repeat;
-}
-
-.KayakoDesktop
-{
-  background: url("../images/appicons/kayakodesktop.png") no-repeat;
-}
-
-.OnSiteViewer
-{
-  background: url("../images/appicons/onsite.png") no-repeat;
+  background: url("../images/appicons/SampleApp.png") no-repeat;
 }

@@ -1,9 +1,9 @@
 <?php 
 
-  include_once('common.php');
-  include_once('mobileredirect.php');
-  require_once('database.php');
-  require_once('crashreport.php');
+  include_once('../include/common.php');
+  include_once('../include/mobileredirect.php');
+  require_once('../classes/database.php');
+  require_once('../classes/crashreport.php');
   
   $productid = isset($_GET['productid']) ? $_GET['productid'] : "";
   $version   = isset($_GET['version']) ? $_GET['version'] : "";
@@ -19,11 +19,11 @@
 
 <html>
 
-<script type='text/javascript' src='scripts/crashreport.js'></script>
-<script type='text/javascript' src='scripts/jquery-1.7.1.js'></script>
+<script type='text/javascript' src='../scripts/crashreport.js'></script>
+<script type='text/javascript' src='../scripts/jquery-1.7.1.js'></script>
 
-<link type='text/css' rel="stylesheet" href='styles/report.css'>
-<link rel='icon' type='image/ico' href='../favicon.ico'>
+<link type='text/css' rel="stylesheet" href='../styles/report.css'>
+<link rel='icon' type='image/ico' href='../images/favicon.ico'>
 
 <body>
 

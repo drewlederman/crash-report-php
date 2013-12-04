@@ -48,7 +48,7 @@ class CrashReport
   
   
   public function EchoHTML() {
-    $template = new Template('templates/crashreport_row.tpl');
+    $template = new Template('../templates/crashreport_row.tpl');
         
     $template->set('entryid',     $this->GetEntryID());
     $template->set('productid',   $this->GetProductID());
@@ -64,7 +64,7 @@ class CrashReport
   }
   
   public function EchoMobileHTML() {
-    $template = new Template('templates/crashreport_row_mobile.tpl');
+    $template = new Template('../templates/crashreport_row_mobile.tpl');
     
     $template->set('entryid',     $this->GetEntryID());
     $template->set('productid',   $this->GetProductID());
