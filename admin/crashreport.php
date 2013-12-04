@@ -1,6 +1,5 @@
 <?php
 
-require_once('database.php');
 require_once('template.php');
 
 class CrashReport 
@@ -27,7 +26,7 @@ class CrashReport
     return long2ip($this->row['ip']);
   }
   
-  private function GetDumpfile() {
+  private function GetDumpFile() {
     return $this->row['dumpfile'];
   }
   
@@ -76,31 +75,6 @@ class CrashReport
     echo $template->output();
   }
 
-}
-
-function GetCrashReports($productid, $version, $ip, $sortby) {  
-  $db = new Database();
-  
-  $sortcolumn = ($sortby == '' ? 'timestamp' : $sortby);
-  
-  $query = "SELECT * " .
-           "FROM entries " .
-           "WHERE 1 " .
-           ($productid != "" ? "AND productid = '{$productid}' " : "") .
-           ($version != "" ? "AND version = '{$version}' " : "") .
-           ($ip != "" ? "AND ip = '{$ip}' " : "") .
-           "ORDER BY entries.{$sortcolumn} DESC;";
-
-  $reports = array();       
-         
-  if ($results = $db->query($query)) {
-    foreach($results as $res) {
-      $rep = new CrashReport($res);
-      $reports[] = $rep;
-    }
-  }
-  
-  return $reports;
 }
 
 ?>

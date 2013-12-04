@@ -1,6 +1,6 @@
 <?php
 
-require('admin/database.php');
+require_once('admin/database.php');
 
 if (!CreateReport()) {
   header('HTTP/1.1 500 Internal server error');
@@ -22,27 +22,23 @@ function CreateReport() {
   // Process report
   
   $report = ProcessReport($file);
-  
-  $stacktrace  = $report ? $report['stacktrace']  : '';
-  $description = $report ? $report['description'] : '';
+  if ($report === null) {
+      return false;
+  }
       
   // Insert entry into database
+ 
+  $productid   = $_POST['productid'];
+  $version     = $_POST['version'];
+  $dumpfile    = pathinfo($file, PATHINFO_BASENAME);
+  $timestamp   = $_SERVER['REQUEST_TIME'];
+  $ipaddress   = ip2long($_SERVER['REMOTE_ADDR']);
+  $stacktrace  = $report['stacktrace'];
+  $description = $report['description'];
 
   $db = new Database();
   
-  $db->open();
-
-  $productid = mysql_real_escape_string($_POST['productid']);
-  $version   = mysql_real_escape_string($_POST['version']);
-  $dumpfile  = mysql_real_escape_string(pathinfo($file, PATHINFO_BASENAME));
-  $timestamp = mysql_real_escape_string($_SERVER['REQUEST_TIME']);
-  $iplong    = mysql_real_escape_string(ip2long($_SERVER['REMOTE_ADDR']));
-  $stack     = mysql_real_escape_string($stacktrace);
-  $desc      = mysql_real_escape_string($description);
-
-  $query = "INSERT INTO entries (productid, version, dumpfile, stacktrace, description, timestamp, ip) VALUES ('$productid', '$version', '$dumpfile', '$stack', '$desc', '$timestamp', '$iplong');";
-  
-  return $db->query($query);
+  return $db->InsertCrashReport($productid, $version, $dumpfile, $timestamp, $ipaddress, $stacktrace, $description);
 }
 
 function CopyTempFile() {
@@ -104,15 +100,15 @@ function GetDescription($dir) {
 function GetStackTrace($dir) {
   $files = glob($dir . '/*.dmp');
   if (isset($files[0])) {
-    $dbgpath = ".\\admin\\debug\\{$_POST['productid']}\\{$_POST['version']}\\";
-    $sympath = 'SRV*.\\admin\\debug\\cache\\*http://msdl.microsoft.com/download/symbols/;' . str_replace(' ', '', $dbgpath);
+    $dbgpath = str_replace(' ', '', ".\\admin\\debug\\{$_POST['productid']}\\{$_POST['version']}\\");
+    $sympath = 'SRV*.\\admin\\debug\\cache\\*http://msdl.microsoft.com/download/symbols/;' . $dbgpath;
         
     $output = shell_exec("cdb -z $files[0] -c .ecxr;kcn;q -y $sympath");
     
     return StripStackTrace($output);
   }
   else {
-    return '';
+    return 'Dump file not found.';
   }
 }
 

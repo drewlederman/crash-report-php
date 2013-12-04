@@ -1,19 +1,16 @@
 <?php
 
-require('database.php');
+require_once('database.php');
 
 if (!isset($_GET['entryids']))
   die("No entryids provided!");
-
+$entryids = $_GET['entryids'];
 
 $db = new Database();
 
 // Delete dump files
 
-$query = "SELECT entries.dumpfile FROM entries " .
-         "WHERE entryid in (" . mysql_real_escape_string($_GET['entryids']) . ");";
-
-$results = $db->query($query);
+$results = $db->GetCrashReportFiles($entryids);
 
 if ($results !== NULL) {
   foreach ($results as $row) {
@@ -22,12 +19,8 @@ if ($results !== NULL) {
   }
 }
 
-
 // Delete database record
 
-$query = "DELETE FROM entries " .
-         "WHERE entryid in (" .mysql_real_escape_string($_GET['entryids']). ");";
-
-$db->query($query);
+$db->DeleteCrashReports($entryids);
   
 ?>

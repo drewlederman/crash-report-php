@@ -1,17 +1,17 @@
 <?php 
 
-  include('common.php');
-  include('mobileredirect.php');
-  require('crashreport.php');
+  include_once('common.php');
+  include_once('mobileredirect.php');
+  require_once('database.php');
+  require_once('crashreport.php');
   
   $productid = isset($_GET['productid']) ? $_GET['productid'] : "";
   $version   = isset($_GET['version']) ? $_GET['version'] : "";
   $ip        = isset($_GET['ip']) ? $_GET['ip'] : "";
   $sort      = isset($_GET['sort']) ? $_GET['sort'] : "";
   
-  $crashreports = GetCrashReports($productid, $version, $ip, $sort);
-  
-  $count = count($crashreports);
+  $db = new Database();
+  $crashreports = $db->GetCrashReports($productid, $version, $ip, $sort);
 
 ?>
 
@@ -46,7 +46,7 @@
   </div>
   <div class='shadow'></div>
   
-  <?php if ($count == 0): ?>
+  <?php if (count($crashreports) == 0): ?>
     <div class='no_reports'>Nothing to report!</div>
   <?php else: ?>
     <div class='report_scroll'>

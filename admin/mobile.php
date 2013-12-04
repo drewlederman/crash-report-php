@@ -1,9 +1,12 @@
 <?php
 
-include('common.php');
-require('crashreport.php');
+include_once('common.php');
+require_once('database.php');
+require_once('crashreport.php');
 
-$crashreports = GetCrashReports('','','','');
+$db = new Database();
+
+$crashreports = $db->GetCrashReports('','','','');
 
 ?>
 
