@@ -1,9 +1,12 @@
 <?php
 
 include('common.php');
+require('database.php');
 require('crashreport.php');
 
-$crashreports = GetCrashReports('','','','');
+$db = new Database();
+
+$crashreports = $db->GetCrashReports('','','','');
 
 ?>
 
